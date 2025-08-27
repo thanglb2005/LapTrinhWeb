@@ -23,4 +23,41 @@ public class UserDaoImpl implements UserDao {
         } catch (Exception e) { e.printStackTrace(); }
         return null;
     }
+    @Override
+    public void insert(User user) {
+        String sql = "INSERT INTO [User](username,password,email,fullname,phone,roleid,createddate) VALUES (?,?,?,?,?,?,?)";
+        try (Connection conn = new DBConnect().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getPassWord());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getFullName());
+            ps.setString(5, user.getPhone());
+            ps.setInt(6, user.getRoleid());
+            ps.setDate(7, user.getCreatedDate());
+            ps.executeUpdate();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    @Override
+    public boolean checkExistUsername(String username) {
+        String sql = "SELECT 1 FROM [User] WHERE username=?";
+        try (Connection conn = new DBConnect().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) { e.printStackTrace(); return false; }
+    }
+
+    @Override
+    public boolean checkExistEmail(String email) {
+        String sql = "SELECT 1 FROM [User] WHERE email=?";
+        try (Connection conn = new DBConnect().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) { e.printStackTrace(); return false; }
+    }
 }

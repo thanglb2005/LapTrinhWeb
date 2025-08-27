@@ -20,5 +20,10 @@
     <input type="checkbox" name="remember"> Nhớ tôi<br><br>
     <button type="submit">Đăng nhập</button>
 </form>
+
+<p>Bạn chưa có tài khoản? 
+   <a href="<%=request.getContextPath()%>/register">Đăng ký ngay</a>
+</p>
+
 </body>
 </html>
