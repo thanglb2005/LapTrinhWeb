@@ -44,4 +44,14 @@ public class UserServiceImpl implements UserService {
     public boolean checkExistEmail(String email) {
         return userDao.checkExistEmail(email);
     }
+    // ===== Quên mật khẩu =====
+    @Override
+    public User findByEmail(String email) {
+        return userDao.findByEmail(email);
+    }
+
+    @Override
+    public void update(User user) {
+        userDao.update(user);
+    }
 }

@@ -39,14 +39,18 @@ public class LoginController extends HttpServlet {
 
         if (user != null) {
             HttpSession session = req.getSession(true);
-            session.setAttribute("account", user);
+            session.setAttribute("account", user);   // giữ object User
+            session.setAttribute("userId", user.getId()); // thêm id để CategoryController dùng
+            session.setAttribute("username", user.getUserName()); // optional
+
             if (isRemember) {
                 Cookie ck = new Cookie("username", username);
                 ck.setMaxAge(30 * 60);
                 resp.addCookie(ck);
             }
             resp.sendRedirect(req.getContextPath() + "/waiting");
-        } else {
+        }
+        else {
             req.setAttribute("alert", "Sai tài khoản hoặc mật khẩu");
             req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
         }

@@ -21,8 +21,14 @@
     <button type="submit">Đăng nhập</button>
 </form>
 
+<!-- Link đăng ký -->
 <p>Bạn chưa có tài khoản? 
    <a href="<%=request.getContextPath()%>/register">Đăng ký ngay</a>
+</p>
+
+<!-- Link quên mật khẩu -->
+<p>
+   <a href="<%=request.getContextPath()%>/views/forgot.jsp">Quên mật khẩu?</a>
 </p>
 
 </body>
