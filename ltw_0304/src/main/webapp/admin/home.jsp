@@ -1,59 +1,46 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Trang chủ</title>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        .sidebar {
-            width: 220px;
-            height: 100vh;
-            background: #111;
-            color: #fff;
-            float: left;
-        }
-        .sidebar h3 {
-            padding: 20px;
-            margin: 0;
-            background: #000;
-        }
-        .sidebar ul { list-style: none; padding: 0; margin: 0; }
-        .sidebar ul li { border-bottom: 1px solid #333; }
-        .sidebar ul li a {
-            display: block;
-            color: #fff;
-            padding: 12px 20px;
-            text-decoration: none;
-        }
-        .sidebar ul li a:hover { background: #0d6efd; }
-        .sidebar ul li ul { background: #0d6efd; }
-        .sidebar ul li ul li a { padding-left: 40px; font-size: 14px; }
-        .content { margin-left: 220px; padding: 20px; }
-    </style>
+  <title>Admin Dashboard</title>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="container mt-4">
+  <h1 class="mb-4">Admin Dashboard</h1>
 
-<div class="sidebar">
-    <h3>Xin chào, <%= ((vn.iotstar.config.model.User)session.getAttribute("account")).getUserName() %></h3>
-    <ul>
-        <li>
-            <a href="#">📂 Quản lý Danh mục</a>
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/admin/category/add">➕ Thêm danh mục mới</a></li>
-                <li><a href="${pageContext.request.contextPath}/admin/category/list">📋 Danh sách danh mục</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="<%=request.getContextPath()%>/logout">🚪 Đăng xuất</a>
-        </li>
-    </ul>
-</div>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card text-bg-primary shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Quản lý danh mục</h5>
+          <p class="card-text">Xem, thêm, sửa, xóa danh mục sản phẩm.</p>
+          <a href="${pageContext.request.contextPath}/admin/list-category.jsp" class="btn btn-light">Đi tới</a>
+        </div>
+      </div>
+    </div>
 
-<div class="content">
-    <h2>Trang chủ</h2>
-    <p>Đăng nhập thành công, chọn menu bên trái để thao tác.</p>
-</div>
+    <div class="col-md-4">
+      <div class="card text-bg-success shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Thông tin của người dùng</h5>
+          <p class="card-text">Kiểm soát thông tin người dùng trong hệ thống.</p>
+			<a href="${pageContext.request.contextPath}/profile" class="btn btn-light">Đi tới</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="col-md-4">
+      <div class="card text-bg-warning shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Báo cáo</h5>
+          <p class="card-text">Xem báo cáo thống kê hoạt động.</p>
+          <a href="#" class="btn btn-light">Đi tới</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

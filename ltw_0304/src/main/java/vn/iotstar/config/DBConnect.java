@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DBConnect {
-    private final String serverName = "DESKTOP-U99VI3O"; // hoặc IP
+    private final String serverName = "localhost"; // hoặc IP
     private final String dbName = "LTWEB";
     private final String portNumber = "1433";
     private final String instance = ""; // nếu có instance: "SQLEXPRESS"

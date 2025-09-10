@@ -84,6 +84,22 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+    
+    @Override
+    public void updateProfile(User user) {
+        String sql = "UPDATE [User] SET fullname=?, phone=?, avatar=? WHERE id=?";
+        try (Connection conn = new DBConnect().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getPhone());
+            ps.setString(3, user.getAvatar());
+            ps.setInt(4, user.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void update(User user) {
@@ -97,5 +113,8 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+    
+    
+
 
 }

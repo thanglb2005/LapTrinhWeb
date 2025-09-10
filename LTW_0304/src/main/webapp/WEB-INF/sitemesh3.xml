@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!-- Layout cho trang thường -->
+    <mapping path="/*" name="web" decorator="web.jsp"/>
+    
+    <!-- Layout cho trang admin -->
+    <mapping path="/admin/*" name="admin" decorator="admin.jsp"/>
+    
+    <!-- Bỏ qua API -->
+    <mapping path="/api*" exclude="true"/>
+</sitemesh>
